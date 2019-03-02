@@ -12,14 +12,20 @@ public class Main {
 
 	public static void main(String[] args) {
 
-		// insert code here
+		SessionFactory sessionFactory = new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
+		Session session = sessionFactory.openSession();
 
 		try {
 
+			session.beginTransaction();
+
+			List<User> theUsers = session.createQuery("from User").getResultList();
+
+			session.getTransaction().commit();
 			// insert code here
 
 		} finally {
-
+			sessionFactory.close();
 			// insert code here
 		}
 	}

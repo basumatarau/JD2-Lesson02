@@ -10,10 +10,16 @@
   <name>jd2_hib_02ex_simple_annotations</name>
   <url>http://maven.apache.org</url>
 
-<properties>
+	<parent>
+		<groupId>by.jd2.basumatarau</groupId>
+		<artifactId>jd2-lesson02</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+
+	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<maven.compiler.source>1.9</maven.compiler.source>
-		<maven.compiler.target>1.9</maven.compiler.target>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
 	</properties>
 
 	<dependencies>

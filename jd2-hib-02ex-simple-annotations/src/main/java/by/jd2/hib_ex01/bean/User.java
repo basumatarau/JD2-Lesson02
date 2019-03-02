@@ -24,22 +24,27 @@ public class User {
 	
 	
 	// insert code here
+	@Column(name="last_name")
 	private String lastName;
 	
 	
 	// insert code here
+	@Column(name="email")
 	private String email;
 	
 	
 	// insert code here
+	@Column(name="password")
 	private String password;
 	
 	
 	// insert code here
+	@Column(name="password_salt")
 	private String passwordSalt;
 	
 	
 	// insert code here
+	@Column(name="last_update")
 	private Timestamp lastUpdate;
 	
 	public User() {}

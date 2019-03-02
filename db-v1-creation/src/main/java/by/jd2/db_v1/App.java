@@ -1,11 +1,14 @@
 package by.jd2.db_v1;
 
+import java.io.FileReader;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 
+import org.apache.ibatis.jdbc.ScriptRunner;
 import org.mindrot.jbcrypt.BCrypt;
 
 public class App {
@@ -22,12 +25,20 @@ public class App {
 			{ "JOE", "SWANK", "JOE@mail.com.by", "12345" },
 			{ "CHRISTIAN", "GABLE", "CHRISTIAN@mail.com.by", "12345" } };
 
-	private final static String INSERT_NEW_USER_INTO_USERS = "INSERT INTO users(first_name, last_name, email, password, password_salt, last_update) VALUES(?,?,?,?,?,?)";
+	private final static String INSERT_NEW_USER_INTO_USERS = "INSERT INTO `db-v1`.users(first_name, last_name, email, password, password_salt, last_update) VALUES(?,?,?,?,?,?)";
 
 	public static void main(String[] args) throws ClassNotFoundException, SQLException {
 		Class.forName("com.mysql.cj.jdbc.Driver");
-		Connection con = DriverManager.getConnection("", "", "");
+		Connection con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/"+
+				"?useUnicode=true&characterEncoding=UTF-8", "root", "password");
 		PreparedStatement ps = con.prepareStatement(INSERT_NEW_USER_INTO_USERS);
+
+		ScriptRunner runner = new ScriptRunner(con);
+		try {
+			runner.runScript(new FileReader("db-v1-creation.sql"));
+		}catch (IOException e){
+			throw new RuntimeException(e);
+		}
 
 		for (int i = 0; i < data.length; i++) {
 			ps.setString(1, data[i][0]);// first_name

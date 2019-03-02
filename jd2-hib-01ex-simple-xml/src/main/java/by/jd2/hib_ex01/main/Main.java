@@ -8,6 +8,7 @@ import org.hibernate.cfg.Configuration;
 
 import by.jd2.hib_ex01.bean.User;
 
+
 public class Main {
 
 	public static void main(String[] args) {
@@ -20,6 +21,11 @@ public class Main {
 				
 				session.beginTransaction();
 
+
+				//CriteriaQuery<User> criteriaQuery = session.getCriteriaBuilder().createQuery(User.class);
+
+				List<User> users = session.createQuery("from User").getResultList();
+				List<String> result = session.createQuery("select u.name from User u").list();
 				// insert code here
 				
 				session.getTransaction().commit();

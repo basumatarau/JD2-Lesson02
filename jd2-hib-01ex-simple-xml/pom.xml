@@ -8,6 +8,12 @@
 	<version>0.0.1</version>
 	<packaging>jar</packaging>
 
+	<parent>
+		<groupId>by.jd2.basumatarau</groupId>
+		<artifactId>jd2-lesson02</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+
 	<name>jd2-hib-01ex-simple</name>
 	<url>http://maven.apache.org</url>
 

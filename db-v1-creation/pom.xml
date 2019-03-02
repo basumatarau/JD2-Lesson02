@@ -8,6 +8,13 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
+	<parent>
+		<groupId>by.jd2.basumatarau</groupId>
+		<artifactId>jd2-lesson02</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+
+
 	<name>db-v1-creation</name>
 	<url>http://maven.apache.org</url>
 
@@ -26,6 +33,11 @@
 			<groupId>org.mindrot</groupId>
 			<artifactId>jbcrypt</artifactId>
 			<version>0.4</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.ibatis</groupId>
+			<artifactId>ibatis-sqlmap</artifactId>
+			<version>3.0-beta-10</version>
 		</dependency>
 	</dependencies>
 </project>
