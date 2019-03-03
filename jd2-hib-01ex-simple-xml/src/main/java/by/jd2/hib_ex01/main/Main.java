@@ -1,5 +1,6 @@
 package by.jd2.hib_ex01.main;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.Session;
@@ -25,9 +26,10 @@ public class Main {
 				//CriteriaQuery<User> criteriaQuery = session.getCriteriaBuilder().createQuery(User.class);
 
 				List<User> users = session.createQuery("from User").getResultList();
-				List<String> result = session.createQuery("select u.name from User u").list();
+				List<String> result = session.createQuery("select u.firstName from User as u").list();
 				// insert code here
-				
+				//List<String> result = new ArrayList<>();
+
 				session.getTransaction().commit();
 
 				for(String name : result) {

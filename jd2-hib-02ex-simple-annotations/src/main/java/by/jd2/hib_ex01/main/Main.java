@@ -8,18 +8,22 @@ import org.hibernate.cfg.Configuration;
 
 import by.jd2.hib_ex01.bean.User;
 
+
 public class Main {
 
 	public static void main(String[] args) {
 
-		SessionFactory sessionFactory = new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
+		SessionFactory sessionFactory = new Configuration()
+												.configure("hibernate.cfg.xml")
+												.addAnnotatedClass(User.class)
+												.buildSessionFactory();
 		Session session = sessionFactory.openSession();
 
 		try {
 
 			session.beginTransaction();
 
-			List<User> theUsers = session.createQuery("from User").getResultList();
+			displayUsers(session.createQuery("from User").getResultList());
 
 			session.getTransaction().commit();
 			// insert code here
