@@ -21,6 +21,6 @@ CREATE TABLE IF NOT EXISTS `db-v1`.`users` (
 `password_salt` VARCHAR(45) NOT NULL,
 `last_update` TIMESTAMP NULL DEFAULT NULL,
 PRIMARY KEY (`user_id`),
-UNIQUE INDEX `email_UNIQUE` (`email` ASC) );
+UNIQUE INDEX `email_UNIQUE` (`email` ASC));
 
 

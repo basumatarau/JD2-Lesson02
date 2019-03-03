@@ -35,9 +35,9 @@ public class App {
 
 		PreparedStatement ps = con.prepareStatement(INSERT_NEW_USER_INTO_USERS);
 
-		ScriptRunner runner = new ScriptRunner(con);
-		try {
-			runner.runScript(new FileReader("db-v1-creation.sql"));
+		try (Connection connection = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/"+
+				"?useUnicode=true&characterEncoding=UTF-8", "root", "password")){
+			new ScriptRunner(connection).runScript(new FileReader("db-v1-creation.sql"));
 		}catch (IOException e){
 			throw new RuntimeException(e);
 		}
